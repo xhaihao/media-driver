@@ -2011,8 +2011,8 @@ static VAStatus DdiMedia_Terminate (
     }
     //destory resources
     DdiMedia_FreeSurfaceHeapElements(mediaCtx);
-    DdiMedia_FreeBufferHeapElements(ctx);
     DdiMedia_FreeImageHeapElements(ctx);
+    DdiMedia_FreeBufferHeapElements(ctx);
     DdiMedia_FreeContextHeapElements(ctx);
     DdiMedia_FreeContextCMElements(ctx);
 
