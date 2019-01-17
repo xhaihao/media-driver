@@ -127,6 +127,9 @@ VAStatus DdiDecodeVP9::ParsePicParams(
             frameIdx                               = GetRenderTargetID(&m_ddiDecodeCtx->RTtbl, refSurface);
             picVp9Params->RefFrameList[i].FrameIdx = ((uint32_t)frameIdx >= CODECHAL_NUM_UNCOMPRESSED_SURFACE_VP9) ? (CODECHAL_NUM_UNCOMPRESSED_SURFACE_VP9 - 1) : frameIdx;
         }
+        else if (picParam->reference_frames[i] == VA_INVALID_SURFACE) {
+            picVp9Params->RefFrameList[i].FrameIdx = CODECHAL_NUM_UNCOMPRESSED_SURFACE_VP9 - 1;
+        }
         else
         {
             PDDI_MEDIA_SURFACE refSurface          = DdiMedia_GetSurfaceFromVASurfaceID(mediaCtx, picParam->reference_frames[i]);
