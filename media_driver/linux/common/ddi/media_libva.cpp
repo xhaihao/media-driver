@@ -4962,7 +4962,10 @@ VAStatus DdiMedia_DestroyImage (
 
     DDI_CHK_NULL(mediaCtx,             "nullptr Media",                        VA_STATUS_ERROR_INVALID_CONTEXT);
     DDI_CHK_NULL(mediaCtx->pImageHeap, "nullptr mediaCtx->pImageHeap",        VA_STATUS_ERROR_INVALID_CONTEXT);
-    DDI_CHK_LESS((uint32_t)image, mediaCtx->pImageHeap->uiAllocatedHeapElements, "Invalid image", VA_STATUS_ERROR_INVALID_IMAGE);
+
+    if ((uint32_t)image >= mediaCtx->pImageHeap->uiAllocatedHeapElements) {
+        DDI_CHK_LESS((uint32_t)image, mediaCtx->pImageHeap->uiAllocatedHeapElements, "Invalid image", VA_STATUS_ERROR_INVALID_IMAGE);
+    }
 
     VAImage *vaImage = DdiMedia_GetVAImageFromVAImageID(mediaCtx, image);
     if (vaImage == nullptr)
