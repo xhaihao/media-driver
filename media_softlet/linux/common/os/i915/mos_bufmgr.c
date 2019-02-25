@@ -66,9 +66,12 @@
 #include "mos_vma.h"
 #include "mos_util_debug.h"
 #include "mos_oca_defs_specific.h"
+
+#define HAVE_VALGRIND 1
+
 #ifdef HAVE_VALGRIND
-#include <valgrind.h>
-#include <memcheck.h>
+#include <valgrind/valgrind.h>
+#include <valgrind/memcheck.h>
 #define VG(x) x
 #else
 #define VG(x)
