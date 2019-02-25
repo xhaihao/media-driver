@@ -74,9 +74,11 @@
 #include "linux_system_info.h"
 #include "mos_os_specific.h"
 
+#define HAVE_VALGRIND 1
+
 #ifdef HAVE_VALGRIND
-#include <valgrind.h>
-#include <memcheck.h>
+#include <valgrind/valgrind.h>
+#include <valgrind/memcheck.h>
 #define VG(x) x
 #else
 #define VG(x)

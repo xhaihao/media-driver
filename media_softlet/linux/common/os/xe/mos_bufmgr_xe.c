@@ -53,6 +53,8 @@
 #include <shared_mutex>
 #include <algorithm>
 
+#define HAVE_VALGRIND 1
+
 #ifdef HAVE_VALGRIND
 #include <valgrind/valgrind.h>
 #include <valgrind/memcheck.h>
