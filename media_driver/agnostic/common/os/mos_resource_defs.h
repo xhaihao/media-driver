@@ -296,6 +296,7 @@ C_ASSERT(Format_Count == 103); //!< When adding, update assert & vphal_solo_scen
               (format == Format_Y210) || \
               (format == Format_Y216) || \
               (format == Format_Y410) || \
+              (format == Format_AYUV) || \
               (format == Format_Y416) )
 
 #define CASE_PA_FORMAT    \
