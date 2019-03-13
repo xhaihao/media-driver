@@ -1710,6 +1710,12 @@ MOS_STATUS VpHal_RndrSetYUVComponents(
             *pOffsetV = 6;
             break;
 
+        case Format_AYUV:
+            *pOffsetY = 1;
+            *pOffsetU = 2;
+            *pOffsetV = 3;
+            break;
+
         default:
             VPHAL_RENDER_ASSERTMESSAGE("Unknown Packed YUV Format.");
             eStatus = MOS_STATUS_UNKNOWN;
