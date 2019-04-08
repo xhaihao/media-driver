@@ -236,6 +236,9 @@ static struct GfxDeviceInfo bdwGt3eInfo = {
 //extern template class DeviceInfoFactory<GfxDeviceInfo>;
 typedef DeviceInfoFactory<GfxDeviceInfo> base_fact;
 
+static bool bdwDevice22b1 = DeviceInfoFactory<GfxDeviceInfo>::
+    RegisterDevice(0x22b1, &bdwGt1Info);
+
 static bool bdwDevice1602 = DeviceInfoFactory<GfxDeviceInfo>::
     RegisterDevice(0x1602, &bdwGt1Info);
 
