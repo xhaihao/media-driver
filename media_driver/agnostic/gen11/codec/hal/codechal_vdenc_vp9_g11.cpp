@@ -65,9 +65,9 @@ MOS_STATUS CodechalVdencVp9StateG11::UserFeatureKeyReport()
     CODECHAL_ENCODE_CHK_STATUS_RETURN(CodechalVdencVp9State::UserFeatureKeyReport());
 
 #if (_DEBUG || _RELEASE_INTERNAL)
-    CodecHalEncodeWriteKey(__MEDIA_USER_FEATURE_VALUE_ENCODE_USED_VDBOX_NUM_ID, m_numPipe, m_osInterface->pOsContext);
-    CodecHalEncodeWriteKey(__MEDIA_USER_FEATURE_VALUE_VP9_ENCODE_ENABLE_HW_STITCH, m_enableTileStitchByHW, m_osInterface->pOsContext);
-    CodecHalEncodeWriteKey(__MEDIA_USER_FEATURE_VALUE_ENABLE_ENCODE_VE_CTXSCHEDULING_ID, MOS_VE_CTXBASEDSCHEDULING_SUPPORTED(m_osInterface), m_osInterface->pOsContext);
+    // CodecHalEncodeWriteKey(__MEDIA_USER_FEATURE_VALUE_ENCODE_USED_VDBOX_NUM_ID, m_numPipe, m_osInterface->pOsContext);
+    // CodecHalEncodeWriteKey(__MEDIA_USER_FEATURE_VALUE_VP9_ENCODE_ENABLE_HW_STITCH, m_enableTileStitchByHW, m_osInterface->pOsContext);
+    // CodecHalEncodeWriteKey(__MEDIA_USER_FEATURE_VALUE_ENABLE_ENCODE_VE_CTXSCHEDULING_ID, MOS_VE_CTXBASEDSCHEDULING_SUPPORTED(m_osInterface), m_osInterface->pOsContext);
 #endif
 
     return eStatus;
