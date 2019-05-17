@@ -1120,7 +1120,10 @@ MOS_STATUS GpuContextSpecific::SubmitCommandBuffer(
             {
                 execFlag = I915_EXEC_BLT;
             }
-            else
+            else if ((gpuNode == MOS_GPU_NODE_VE))
+            {
+                execFlag = I915_EXEC_VEBOX;
+            } else
             {
                 MOS_OS_ASSERTMESSAGE("Invalid gpuNode.");
             }
