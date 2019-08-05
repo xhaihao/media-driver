@@ -3719,6 +3719,12 @@ VAStatus DdiMedia_DestroyBuffer (
     return VA_STATUS_SUCCESS;
 }
 
+VAStatus DdiMedia_DeriveImage (
+    VADriverContextP  ctx,
+    VASurfaceID       surface,
+    VAImage           *image
+);
+
 /*
  * Get ready to decode a picture to a target surface
  */
@@ -3758,6 +3764,17 @@ static VAStatus DdiMedia_BeginPicture (
     switch (ctxType)
     {
         case DDI_MEDIA_CONTEXT_TYPE_DECODER:
+            {
+                VAImage tmpImage;
+                char *buffer = NULL;
+                tmpImage.image_id = VA_INVALID_ID;
+
+                DdiMedia_DeriveImage(ctx,render_target,&tmpImage);
+                DdiMedia_MapBuffer(ctx,tmpImage.buf,(void **)&buffer);
+                MOS_FillMemory(buffer, tmpImage.data_size, 0);
+                DdiMedia_UnmapBuffer(ctx,tmpImage.buf);
+            }
+
             return DdiDecode_BeginPicture(ctx, context, render_target);
         case DDI_MEDIA_CONTEXT_TYPE_ENCODER:
             return DdiEncode_BeginPicture(ctx, context, render_target);
