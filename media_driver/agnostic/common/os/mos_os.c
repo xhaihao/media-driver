@@ -511,7 +511,7 @@ MOS_STATUS Mos_DumpCommandBufferInit(
 {
     char                                sFileName[MOS_MAX_HLT_FILENAME_LEN];
     MOS_STATUS                          eStatus = MOS_STATUS_UNKNOWN;
-    MOS_USER_FEATURE_VALUE_DATA         UserFeatureData;
+    MOS_USER_FEATURE_VALUE_DATA         UserFeatureData = {0};
     char                                *psFileNameAfterPrefix = nullptr;
     size_t                              nSizeFileNamePrefix = 0;
 

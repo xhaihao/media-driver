@@ -50,7 +50,7 @@ MOS_STATUS OsContext::CommandBufferDumpInit(PMOS_CONTEXT mosCtx)
     MOS_OS_FUNCTION_ENTER;
     char                                sFileName[MOS_MAX_HLT_FILENAME_LEN];
     MOS_STATUS                          eStatus = MOS_STATUS_UNKNOWN;
-    MOS_USER_FEATURE_VALUE_DATA         UserFeatureData;
+    MOS_USER_FEATURE_VALUE_DATA         UserFeatureData = {0};
 
     // Check if command buffer dump was enabled in user feature.
     MOS_UserFeature_ReadValue_ID(

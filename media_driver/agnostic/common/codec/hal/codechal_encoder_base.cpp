@@ -4982,6 +4982,10 @@ CodechalEncoderState::CodechalEncoderState(
     MOS_ZeroMemory(&m_vdencMeKernelBindingTable, sizeof(m_vdencMeKernelBindingTable));
 
     MOS_ZeroMemory(&m_vdencStreaminKernelBindingTable, sizeof(m_vdencStreaminKernelBindingTable));
+
+#if (_DEBUG || _RELEASE_INTERNAL)
+    m_mmcUserFeatureUpdated = false;
+#endif
 }
 
 CodechalEncoderState::~CodechalEncoderState()

@@ -1007,6 +1007,7 @@ int drmPrimeHandleToFD(int fd, uint32_t handle, uint32_t flags, int *prime_fd)
     struct drm_prime_handle args;
     int ret;
 
+    memset(&args, 0, sizeof(args));
     args.handle = handle;
     args.flags = flags;
     ret = drmIoctl(fd, DRM_IOCTL_PRIME_HANDLE_TO_FD, &args);
