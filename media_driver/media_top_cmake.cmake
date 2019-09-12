@@ -21,7 +21,7 @@
 project( media )
 
 find_package(PkgConfig)
-find_package(libva-x11)
+find_package(X11)
 
 bs_set_if_undefined(LIB_NAME iHD_drv_video)
 
