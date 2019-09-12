@@ -21,7 +21,7 @@
 project( media )
 
 find_package(PkgConfig)
-find_package(libva-x11)
+find_package(X11)
 find_package(Backtrace)
 
 # to get access to generated header files
