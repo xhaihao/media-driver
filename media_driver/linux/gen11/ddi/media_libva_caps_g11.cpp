@@ -1360,7 +1360,7 @@ VAStatus MediaLibvaCapsG11::CreateDecAttributes(
         (*attribList)[attrib.type] = attrib.value;
     } else if(profile == VAProfileNone)
     {
-        attrib.value = VA_RT_FORMAT_YUV420 | VA_RT_FORMAT_YUV422 | VA_RT_FORMAT_RGB32 | VA_RT_FORMAT_YUV444;
+        attrib.value = VA_RT_FORMAT_YUV420 | VA_RT_FORMAT_YUV422 | VA_RT_FORMAT_RGB32 | VA_RT_FORMAT_YUV444 | VA_RT_FORMAT_RGBP;
         (*attribList)[attrib.type] = attrib.value;
     }
 
