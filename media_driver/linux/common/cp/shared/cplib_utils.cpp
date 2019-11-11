@@ -130,6 +130,13 @@ bool CPLibUtils::LoadCPLib(VADriverContextP ctx)
 void CPLibUtils::UnloadCPLib(VADriverContextP ctx)
 {
     m_referenceMutex.lock();
+
+    if (m_referenceCount == 0)
+    {
+        m_referenceMutex.unlock();
+        return;
+    }
+
     --m_referenceCount;
 
     if(m_referenceCount < 0)
