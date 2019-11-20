@@ -2232,6 +2232,7 @@ VAStatus MediaLibvaCaps::CheckDecodeResolution(
 
 VAStatus MediaLibvaCaps::CheckEncodeResolution(
         VAProfile profile,
+        VAEntrypoint entrypoint,
         uint32_t width,
         uint32_t height)
 {
@@ -2256,6 +2257,15 @@ VAStatus MediaLibvaCaps::CheckEncodeResolution(
                 return VA_STATUS_ERROR_RESOLUTION_NOT_SUPPORTED;
             }
             break;
+        case VAProfileHEVCMain:
+            if(entrypoint == VAEntrypointEncSlice) {
+                if (width > m_encMax8kWidth
+                    || width < m_encMinWidth
+                    || height > m_encMax8kHeight
+                    || height < m_encMinHeight)
+                    return VA_STATUS_ERROR_RESOLUTION_NOT_SUPPORTED;
+                break;
+            }
         default:
             if (width > m_encMax4kWidth
                     || width < m_encMinWidth
@@ -3014,7 +3024,20 @@ VAStatus MediaLibvaCaps::QuerySurfaceAttributes(
         {
             attribs[i].value.value.i = ENCODE_JPEG_MAX_PIC_WIDTH;
         }
-        if(IsAvcProfile(profile)||IsHevcProfile(profile)||IsVp8Profile(profile))
+
+        if(IsHevcProfile(profile))
+        {
+            if (entrypoint == VAEntrypointEncSlice)
+            {
+                attribs[i].value.value.i = CODEC_8K_MAX_PIC_WIDTH;
+            }
+            else
+            {
+                attribs[i].value.value.i = CODEC_4K_MAX_PIC_WIDTH;
+            }
+        }
+
+        if(IsAvcProfile(profile)||IsVp8Profile(profile))
         {
             attribs[i].value.value.i = CODEC_4K_MAX_PIC_WIDTH;
         }
@@ -3028,7 +3051,20 @@ VAStatus MediaLibvaCaps::QuerySurfaceAttributes(
         {
             attribs[i].value.value.i = ENCODE_JPEG_MAX_PIC_HEIGHT;
         }
-        if(IsAvcProfile(profile)||IsHevcProfile(profile)||IsVp8Profile(profile))
+
+        if(IsHevcProfile(profile))
+        {
+            if (entrypoint == VAEntrypointEncSlice)
+            {
+                attribs[i].value.value.i = CODEC_8K_MAX_PIC_WIDTH;
+            }
+            else
+            {
+                attribs[i].value.value.i = CODEC_4K_MAX_PIC_WIDTH;
+            }
+        }
+
+        if(IsAvcProfile(profile)||IsVp8Profile(profile))
         {
             attribs[i].value.value.i = CODEC_4K_MAX_PIC_HEIGHT;
         }
