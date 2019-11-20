@@ -238,6 +238,7 @@ VAStatus DdiEncode_CreateContext(
 
     vaStatus = mediaDrvCtx->m_caps->CheckEncodeResolution(
             profile,
+            entrypoint,
             picture_width,
             picture_height);
     if (vaStatus != VA_STATUS_SUCCESS)

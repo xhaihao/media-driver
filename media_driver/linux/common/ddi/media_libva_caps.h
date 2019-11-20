@@ -358,6 +358,7 @@ public:
     //!
     virtual VAStatus CheckEncodeResolution(
             VAProfile profile,
+            VAEntrypoint entrypoint,
             uint32_t width,
             uint32_t height);
 
@@ -805,6 +806,10 @@ protected:
         CODEC_4K_MAX_PIC_WIDTH; //!< Minimum width for encoding
     static const uint32_t m_encMax4kHeight =
         CODEC_4K_MAX_PIC_HEIGHT; //!< Minimum height for encoding
+    static const uint32_t m_encMax8kWidth =
+        CODEC_8K_MAX_PIC_WIDTH; //!< Minimum width for encoding
+    static const uint32_t m_encMax8kHeight =
+        CODEC_8K_MAX_PIC_HEIGHT; //!< Minimum height for encoding
     static const uint32_t m_encJpegMinWidth = 16; //!< Minimum width for encoding
     static const uint32_t m_encJpegMinHeight = 16; //!< Minimum height for encoding
     static const uint32_t m_encJpegMaxWidth =

@@ -73,6 +73,7 @@ protected:
     virtual VAStatus LoadVp9EncProfileEntrypoints();
     virtual VAStatus CheckEncodeResolution(
             VAProfile profile,
+            VAEntrypoint entrypoint,
             uint32_t width,
             uint32_t height);
     virtual VAStatus CheckDecodeResolution(

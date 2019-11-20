@@ -222,6 +222,7 @@ protected:
 
     virtual VAStatus CheckEncodeResolution(
         VAProfile profile,
+        VAEntrypoint entrypoint,
         uint32_t width,
         uint32_t height) override;
     virtual VAStatus CheckDecodeResolution(
