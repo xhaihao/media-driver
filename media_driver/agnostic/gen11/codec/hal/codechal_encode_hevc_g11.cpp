@@ -5802,7 +5802,7 @@ MOS_STATUS CodechalEncHevcStateG11::EncodeBrcLcuUpdateKernel()
     resolutionX = MOS_ROUNDUP_SHIFT(resolutionX, 4);
     resolutionY = CODECHAL_GET_HEIGHT_IN_MACROBLOCKS(m_frameHeight);
     resolutionY = MOS_ROUNDUP_SHIFT(resolutionY, 3);
-    CODECHAL_ENCODE_ASSERTMESSAGE("LucBRC thread space = %d x %d", resolutionX, resolutionY);
+    // CODECHAL_ENCODE_ASSERTMESSAGE("LucBRC thread space = %d x %d", resolutionX, resolutionY);
 
     MHW_WALKER_PARAMS   walkerParams;
     MOS_ZeroMemory(&walkerParams, sizeof(walkerParams));
