@@ -692,14 +692,9 @@ VAStatus DdiEncodeAvc::ParseMiscParamROI(void *data)
         vaEncMiscParamROI->roi++;
         roi++;
     }
-#ifndef ANDROID
+
     seqParams->ROIValueInDeltaQP = vaEncMiscParamROI->roi_flags.bits.roi_value_is_qp_delta;
-    if(picParams->NumROI != 0 && seqParams->ROIValueInDeltaQP == 0)
-    {
-        DDI_ASSERTMESSAGE("ROI does not support priority level now.");
-        return VA_STATUS_ERROR_INVALID_PARAMETER;
-    }
-#endif
+    printf("Set ROI in the driver for AVC encoding: %s:%d\n", seqParams->ROIValueInDeltaQP ? "delta qp" : "priority", picParams->ROI[0].PriorityLevelOrDQp);
     return VA_STATUS_SUCCESS;
 }
 
