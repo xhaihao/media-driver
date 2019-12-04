@@ -579,7 +579,7 @@ void MosOcaInterfaceSpecific::OnOcaError(PMOS_CONTEXT mosCtx, MOS_STATUS status,
         return;
     }
 
-    MOS_OS_ASSERTMESSAGE("%s failed at line %d with status = %d!", functionName, lineNumber, status);
+    // MOS_OS_ASSERTMESSAGE("%s failed at line %d with status = %d!", functionName, lineNumber, status);
 
     MOS_TraceEventExt(EVENT_OCA_ERROR,
                       EVENT_TYPE_INFO,

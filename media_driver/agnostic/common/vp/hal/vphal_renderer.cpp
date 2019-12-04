@@ -767,7 +767,7 @@ MOS_STATUS VphalRenderer::RenderPass(
                     pRenderParams->uSrcCount = 0; // set to zero for color fill
                     pRenderParams->pTarget[0]->rcDst.top = pRenderParams->pSrc[0]->rcDst.bottom;
                     RenderPassData.bCompNeeded = true;
-                    VPHAL_RENDER_ASSERTMESSAGE("Critical: enter fast color fill");
+                    // VPHAL_RENDER_ASSERTMESSAGE("Critical: enter fast color fill");
                 }
                 if (RenderPassData.b2CSCNeeded)
                 {
