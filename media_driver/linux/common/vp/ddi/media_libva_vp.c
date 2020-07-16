@@ -1858,7 +1858,7 @@ VAStatus VpSetColorStandardExplictly(PVPHAL_SURFACE pVpHalSurf, VAProcColorStand
             break;
         default:
             pVpHalSurf->ColorSpace = CSpace_BT601;
-            VP_DDI_ASSERTMESSAGE("unknown Color Standard for YUV format.");
+            // VP_DDI_ASSERTMESSAGE("unknown Color Standard for YUV format.");
             break;
         }
     }
