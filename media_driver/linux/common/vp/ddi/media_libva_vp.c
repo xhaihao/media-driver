@@ -3828,12 +3828,12 @@ DdiVp_SetProcPipelineBlendingParams(
         {
             pSrc->pBlendingParams->BlendType = BLEND_CONSTANT;
             pSrc->pBlendingParams->fAlpha    = blend_state->global_alpha;
-            VP_DDI_ASSERTMESSAGE("BLEND_CONSTANT do not support alpha calculating.\n");
+	    // VP_DDI_ASSERTMESSAGE("BLEND_CONSTANT do not support alpha calculating.\n");
         }
         else if(!bPreMultAlpha && !bGlobalAlpha)      // Do per-pixel alpha blending for non-premultiplied surface
         {
             pSrc->pBlendingParams->BlendType = BLEND_SOURCE;
-            VP_DDI_ASSERTMESSAGE("BLEND_SOURCE do not support alpha calculating.\n");
+            // VP_DDI_ASSERTMESSAGE("BLEND_SOURCE do not support alpha calculating.\n");
         }
 
         // Not support per-plane plus per-pixel alpha blending for non-premultiplied surface.
@@ -3846,19 +3846,19 @@ DdiVp_SetProcPipelineBlendingParams(
             {
                 pSrc->pBlendingParams->BlendType = BLEND_CONSTANT;
                 pSrc->pBlendingParams->fAlpha    = blend_state->global_alpha;
-                VP_DDI_ASSERTMESSAGE("BLEND_CONSTANT do not support alpha calculating.\n");
+                // VP_DDI_ASSERTMESSAGE("BLEND_CONSTANT do not support alpha calculating.\n");
             }
             else
             {
                 pSrc->pBlendingParams->BlendType = BLEND_PARTIAL;
-                VP_DDI_NORMALMESSAGE("Because BLEND_CONSTANT do not support alpha calculating, use BLEND_PARTIAL instead.\n");
+                // VP_DDI_NORMALMESSAGE("Because BLEND_CONSTANT do not support alpha calculating, use BLEND_PARTIAL instead.\n");
             }
 
             // bPreMultAlpha should not be true for surfaces which do not contain alpha value,
             // but inorder to make the driver more usable, choose the most reasonable blending mode, but print out a message.
             if(bPreMultAlpha)
             {
-                VP_DDI_NORMALMESSAGE("Should not set VA_BLEND_PREMULTIPLIED_ALPHA for surface which do not contain alpha value.\n");
+                // VP_DDI_NORMALMESSAGE("Should not set VA_BLEND_PREMULTIPLIED_ALPHA for surface which do not contain alpha value.\n");
             }
         }
         else
@@ -3870,7 +3870,7 @@ DdiVp_SetProcPipelineBlendingParams(
             // but inorder to make the driver more usable, choose the most reasonable blending mode, but print out a message.
             if(bPreMultAlpha)
             {
-                VP_DDI_NORMALMESSAGE("Should not set VA_BLEND_PREMULTIPLIED_ALPHA for surface which do not contain alpha value.\n");
+                // VP_DDI_NORMALMESSAGE("Should not set VA_BLEND_PREMULTIPLIED_ALPHA for surface which do not contain alpha value.\n");
             }
         }
     }

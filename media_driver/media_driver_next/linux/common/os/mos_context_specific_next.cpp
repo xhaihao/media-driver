@@ -226,7 +226,7 @@ MOS_STATUS OsContextSpecificNext::Init(DDI_DEVICE_CONTEXT ddiDriverContext)
         MOS_OS_CHK_NULL_RETURN(osDriverContext->ppMediaCopyState);
         if (*osDriverContext->ppMediaCopyState == nullptr)
         {
-            MOS_OS_ASSERTMESSAGE("Media Copy state creation failed");
+            // MOS_OS_ASSERTMESSAGE("Media Copy state creation failed");
         }
     }
     return eStatus;
