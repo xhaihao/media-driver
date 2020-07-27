@@ -1838,7 +1838,7 @@ VAStatus VpSetColorStandardExplictly(PVPHAL_SURFACE pVpHalSurf, VAProcColorStand
             break;
         default:
             pVpHalSurf->ColorSpace = CSpace_sRGB;
-            VP_DDI_ASSERTMESSAGE("unknown Color Standard for RGB format.");
+            // VP_DDI_ASSERTMESSAGE("unknown Color Standard for RGB format.");
             break;
         }
     }
