@@ -455,6 +455,8 @@ int32_t DdiMedia_MediaFormatToOsFormat(DDI_MEDIA_FORMAT format)
             return VA_FOURCC_Y216;
         case Media_Format_AYUV:
             return VA_FOURCC_AYUV;
+        case Media_Format_XYUV:
+            return VA_FOURCC_XYUV;
         case Media_Format_Y410:
             return VA_FOURCC_Y410;
 #if VA_CHECK_VERSION(1, 9, 0)
@@ -590,6 +592,8 @@ DDI_MEDIA_FORMAT DdiMedia_OsFormatToMediaFormat(int32_t fourcc, int32_t rtformat
             return Media_Format_Y216;
         case VA_FOURCC_AYUV:
             return Media_Format_AYUV;
+        case VA_FOURCC_XYUV:
+            return VA_FOURCC_XYUV;
         case VA_FOURCC_Y410:
             return Media_Format_Y410;
 #if VA_CHECK_VERSION(1, 9, 0)
@@ -2495,6 +2499,9 @@ DdiMedia_CreateSurfaces2(
             break;
         case VA_FOURCC_AYUV:
             expected_fourcc = VA_FOURCC_AYUV;
+            break;
+        case VA_FOURCC_XYUV:
+            expected_fourcc = VA_FOURCC_XYUV;
             break;
         case VA_FOURCC_Y410:
             expected_fourcc = VA_FOURCC_Y410;
@@ -4491,6 +4498,7 @@ VAStatus DdiMedia_CreateImage(
         case VA_FOURCC_VYUY:
         case VA_FOURCC_YVYU:
         case VA_FOURCC_AYUV:
+        case VA_FOURCC_XYUV:
         case VA_FOURCC_Y210:
 #if VA_CHECK_VERSION(1, 9, 0)
         case VA_FOURCC_Y212:
@@ -4826,6 +4834,7 @@ VAStatus DdiMedia_DeriveImage (
         break;
     case Media_Format_Y410:
     case Media_Format_AYUV:
+    case Media_Format_XYUV:
     case Media_Format_Y210:
 #if VA_CHECK_VERSION(1, 9, 0)
     case Media_Format_Y212:
@@ -6757,6 +6766,7 @@ static uint32_t DdiMedia_GetPlaneNum(PDDI_MEDIA_SURFACE mediaSurface, bool hasAu
 #endif
         case VA_FOURCC_Y416:
         case VA_FOURCC_AYUV:
+        case VA_FOURCC_XYUV:
         case VA_FOURCC_RGBA:
         case VA_FOURCC_RGBX:
         case VA_FOURCC_BGRA:
@@ -6809,6 +6819,8 @@ static uint32_t DdiMedia_GetDrmFormatOfSeparatePlane(uint32_t fourcc, int plane)
             return DRM_FORMAT_UYVY;
         case VA_FOURCC_AYUV:
             return DRM_FORMAT_AYUV;
+        case VA_FOURCC_XYUV:
+            return DRM_FORMAT_XYUV8888;
         case VA_FOURCC_Y210:
             return DRM_FORMAT_Y210;
         case VA_FOURCC_Y216:
