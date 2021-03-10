@@ -1405,6 +1405,7 @@ MOS_STATUS MosInterface::ConvertResourceFromDdi(
             resource->Format = Format_Y216;
             break;
         case Media_Format_AYUV:
+        case Media_Format_XYUV:
             resource->Format = Format_AYUV;
             break;
         case Media_Format_Y410:
