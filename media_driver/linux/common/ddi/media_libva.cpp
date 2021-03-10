@@ -610,7 +610,7 @@ DDI_MEDIA_FORMAT DdiMedia_OsFormatToMediaFormat(int32_t fourcc, int32_t rtformat
         case VA_FOURCC_AYUV:
             return Media_Format_AYUV;
         case VA_FOURCC_XYUV:
-            return VA_FOURCC_XYUV;
+            return Media_Format_XYUV;
         case VA_FOURCC_Y410:
             return Media_Format_Y410;
 #if VA_CHECK_VERSION(1, 9, 0)
