@@ -330,8 +330,21 @@ static bool InitTglMediaSkuExt(struct GfxDeviceInfo *devInfo,
         MEDIA_WR_SKU(skuTable, FtrE2ECompression, 0);
     }
 
-    // Create compressible surface by default
-    MEDIA_WR_SKU(skuTable, FtrCompressibleSurfaceDefault, 1);
+    // Create uncompressible surface by default
+    MEDIA_WR_SKU(skuTable, FtrCompressibleSurfaceDefault, 0);
+
+    MOS_ZeroMemory(&userFeatureData, sizeof(userFeatureData));
+    MOS_UserFeature_ReadValue_ID(
+        nullptr,
+        __MEDIA_USER_FEATURE_VALUE_COMPRESSIBLE_DEFAULT_ON_ID,
+        &userFeatureData,
+        (MOS_CONTEXT_HANDLE)nullptr);
+
+    if (userFeatureData.bData)
+    {
+        // Create as compressible surfaceif key is set
+        MEDIA_WR_SKU(skuTable, FtrCompressibleSurfaceDefault, 1);
+    }
 
     if (drvInfo->devId == 0xFF20)
     {
