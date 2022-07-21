@@ -879,7 +879,6 @@ VAStatus MediaLibvaCapsG12::LoadProfileEntrypoints()
 
 VAStatus MediaLibvaCapsG12::CheckEncodeResolution(
         VAProfile profile,
-        VAEntrypoint entrypoint,
         uint32_t width,
         uint32_t height)
 {
