@@ -32,6 +32,8 @@
 #include "codechal_debug.h"
 #endif
 
+#define DEFAULT_MAX_SEI_PAYLOAD_SIZE 4096
+
 const uint8_t CodechalEncodeHevcBase::TransformSkipCoeffsTable[4][2][2][2][2] =
 {
     { { { { 42, 37 },{ 32, 40 } },{ { 40, 40 },{ 32, 45 } } },{ { { 29, 48 },{ 26, 53 } },{ { 26, 56 },{ 24, 62 } } } },
@@ -635,7 +637,7 @@ MOS_STATUS CodechalEncodeHevcBase::AllocateBatchBufferForPakSlices(
         sizeof(MHW_BATCH_BUFFER));
 
     // Get the slice size
-    uint32_t size = (numPakPasses + 1) * numSlices * m_sliceStatesSize;
+    uint32_t size = (numPakPasses + 1) * numSlices * m_sliceStatesSize + DEFAULT_MAX_SEI_PAYLOAD_SIZE * 2; // double to take account of BRC 2nd pass
 
     m_batchBufferForPakSlices[m_currPakSliceIdx].bSecondLevel = true;
     CODECHAL_ENCODE_CHK_STATUS_RETURN(Mhw_AllocateBb(

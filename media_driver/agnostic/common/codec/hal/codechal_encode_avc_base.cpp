@@ -32,6 +32,7 @@
 #define CODECHAL_ENCODE_AVC_CQP_NUM_OF_PASSES 2
 #define CODECHAL_ENCODE_AVC_ICQ_NUM_OF_PASSES 2
 #define CODECHAL_ENCODE_AVC_EXTENDED_SAR 255
+#define DEFAULT_MAX_SEI_PAYLOAD_SIZE 4096
 
 const uint8_t CODECHAL_ENCODE_AVC_SFD_CostTable_P_FRAME[CODEC_AVC_NUM_QP] =
     {
@@ -2150,7 +2151,7 @@ MOS_STATUS CodechalEncodeAvcBase::AllocateBatchBufferForPakSlices(
         sizeof(MHW_BATCH_BUFFER));
 
     // Get the slice size
-    uint32_t size = (numPakPasses + 1) * numSlices * m_pakSliceSize;
+    uint32_t size = (numPakPasses + 1) * numSlices * m_pakSliceSize + DEFAULT_MAX_SEI_PAYLOAD_SIZE * 2; // double Payload size to take account of BRC 2nd pass
 
     m_batchBufferForPakSlices[currRecycledBufIdx].bSecondLevel = true;
     CODECHAL_ENCODE_CHK_STATUS_RETURN(Mhw_AllocateBb(
