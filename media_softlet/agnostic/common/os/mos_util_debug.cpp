@@ -653,8 +653,15 @@ int32_t MosUtilDebug::MosShouldPrintMessage(
         return false;
     }
 
-    return true;
+    {
+        int  bprint = 0;
+        char *val = getenv("GFX_MEDIA_LOG");
 
+        if (val)
+            bprint = strtoll(val, nullptr, 0);
+
+        return bprint != 0;
+    }
 }
 
 #if MOS_ASSERT_ENABLED
